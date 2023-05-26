@@ -2,6 +2,7 @@ FROM datajoint/miniconda3:4.10.3-py3.9-alpine
 ARG PACKAGE
 WORKDIR /main
 COPY --chown=anaconda:anaconda ./docs/.docker/apk_requirements.txt ${APK_REQUIREMENTS}
+RUN pip3 install -U pip
 COPY --chown=anaconda:anaconda ./docs/.docker/pip_requirements.txt ${PIP_REQUIREMENTS}
 RUN \
     umask u+rwx,g+rwx,o-rwx && \
